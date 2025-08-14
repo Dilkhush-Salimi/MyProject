@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عاقل</title>
+    <style>
+        .container{
+            text-align: center;
+            width: 60%;
+            height: 300px;
+            margin: 40px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+        }
+        #timeInput,#startButton{
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        #countdownDisplay{
+            font-size: 30px;
+            color: aqua;
+        }
+        #quoteDisplay{
+            height: 150px;
+            font-size: 32px;
+            color: aqua;
+        }
+        button{
+            margin: 5px;
+            text-align: center;                                                                                  
+        }
+        #number2,#number1{
+            padding: 8px;
+            margin: 3px;
+        }
+        #textInput{
+            width: 30vw;
+            height: 100px;
+        }
+        .containerColor{
+            width: 50vw;
+            /* height: 500px; */
+            padding: 10px;
+            margin: 100px;
+            text-align: center;
+            text-transform: capitalize;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            
+        }
+        #colorInput{
+            width: 70px;
+            height: 70px;
+           
+        }
+        button{
+            height: 30px;
+            
+        }
+        .color-box{
+            font-size: 8px;
+            text-align: center;
+            padding: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            margin: 2px;
+        }
+        #complementoryContainer, #favouriteContaier{
+            display: flex;
+            justify-content: center;
+            height: 90px;
+        }
+
+        .tip-container{
+            width: 40vw;
+            /* height: 500px; */
+            padding: 15px;
+            margin: 100px;
+            text-align: center;
+            text-transform: capitalize;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            
+        }
+        .box{
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        .result-box{
+            height: 110px;
+        }
+        button, input{
+            height: 30px;
+            
+        }
+        .dice{
+            font-size: 5rem;
+            margin: 20px 0;
+            color: greenyellow;
+
+        }
+        #rollButton{
+            background: greenyellow;
+            border: none;
+            color: #1e1e1e;
+            padding: 10px;
+            font-size: 1rem;
+            cursor:pointer;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CountDown Timer</h1>
+        <input type="number" id="timeInput" placeholder="Enter time in seconds">
+        <button id="startButton">Go</button>
+        <p id="countdownDisplay"></p>
+        <button id="start">Restart</button>
+        <button id="stop">stop</button>
+    </div>
+    <div class="container">
+        <h1>Random quote generator</h1>
+        <p id="quoteDisplay">click the button to get the quote</p>
+        <button id="generateBtn">generate</button>
+    </div>
+    <div class="container">
+        <h1>Simple calculator</h1>
+        <input type="number" id="number1" placeholder="Enter first no">
+        <br>
+        <input type="number" id="number2" placeholder="Enter second no">
+        <div class="buttons">
+            <button onclick="calculator('+')">+</button>
+            <button onclick="calculator('-')">-</button>
+            <button onclick="calculator('*')">*</button>
+            <button onclick="calculator('/')">/</button>
+
+        </div>
+        <p id="results">result...</p>
+    </div>
+    <div class="container">
+        <h1>Character Counter</h1>
+        <textarea  id="textInput" placeholder="Type here..." maxlength="200"></textarea>
+        <p id="charCount">0/200 characters</p>
+        <p id="warningMess"></p>
+    </div>
+    <div class="container">
+        <h1>Random color generator</h1>
+        <button id="random-color">Start color gen</button>
+    </div>
+    <div class="containerColor">
+        <h1>advanced color picker</h1>
+        <input type="color" id="colorInput">
+        <p id="colorCode">#000000</p>
+        <button id="copyBtn">copy color doce</button>
+
+        <!-- complementory color  -->
+         <div class="complementory-colors">
+            <h2>complementory color</h2>
+            <div id="complementoryContainer"></div>
+         </div>
+          
+         <!-- favourite color list  -->
+          <button id="saveColorBtn">save color</button>
+          <div class="favourites">
+            <h2>favourite color`s list </h2>
+            <div id="favouriteContaier"></div>
+          </div>
+    </div>
+    <div class="tip-container">
+        <h1>tip calculator</h1>
+        <div class="box">
+             <!-- bill maount input  -->
+            <label for="fillAmount">bill amount :</label>
+            <input type="number" id="billAmount" placeholder="enter bil amount">
+        </div>
+        <div class="box">
+            <!-- tip percentage input  -->
+          <label for="tipPercentage">tip percentage :</label>
+          <input type="number" id="tipPercentage" placeholder="enter tip %">
+        </div>
+        <div class="box">
+            <!-- number of people  -->
+           <label for="numPeople">number of people :</label>
+           <input type="number" id="numPeople" placeholder="number of people ">
+        </div>
+        <div class="result-box">
+            <!-- result section  -->
+            <button id="calculateBtn">calculate tip</button>
+            <p id="totalTip">total tip :$0.00</p>
+            <p id="tipPerPerson">tip per person :$0.00</p>
+        </div>
+    </div>
+    <div class="container">
+        <h1>
+            palindrome check
+        </h1>
+        <input type="text" id="inputText" placeholder="enter a word or phrase">
+        <br><br>
+        <br>
+        <button id="checkButton">check palindrome </button>
+        <p id="resultMessage"></p>
+
+    </div>
+    <div class="container">
+        <h1>Dice roll simulator</h1>
+        <div class="dice" id="dice">🎲</div>
+        <button id="rollButton">roll dice</button>
+        <p id="resultMessagess">roll the dice to see the result </p>
+    </div>
+    <script>
+        const startbtn=document.getElementById('startButton')
+        const timeInput=document.getElementById('timeInput')
+        const countdownDisplay=document.getElementById('countdownDisplay');
+        let intervaid;
+        const Restart=document.getElementById('start')
+        const stop=document.getElementById('stop')
+
+        function startTimer(){
+            let valueInsecond=parseInt(timeInput.value);
+            // converted into Number 
+            timeInput.value='';
+            
+            if (isNaN(valueInsecond)) {
+                countdownDisplay.innerText='please enter a valid no'
+                return
+            }
+
+            if (valueInsecond<=0) {
+                countdownDisplay.innerText='please enter a vaue > 0'
+                return
+            }
+
+            let timer=setInterval(function(){
+                valueInsecond--;
+                countdownDisplay.innerText=`Time remaining: ${valueInsecond} seconds`;
+                if (valueInsecond<=0) {
+                    clearInterval(timer);
+                    countdownDisplay.innerText='Time is up ⏱️'
+                    
+                }
+            }, 1*1000)
+
+        // to stop  
+
+
+             stop.addEventListener('click', ()=>{
+             clearInterval(timer)
+            })
+
+
+        // restarting (doubt)
+            Restart.addEventListener('click', ()=>{
+                let timer=setInterval(function(){
+                valueInsecond--;
+                countdownDisplay.innerText=`Time remaining: ${valueInsecond} seconds`;
+                if (valueInsecond<=0) {
+                    clearInterval(timer);
+                    countdownDisplay.innerText='Time is up ⏱️';
+                    
+                }
+            }, 1*1000)
+                
+
+            })
+        }
+
+        startbtn.addEventListener('click',startTimer)
+
+        
+        
+
+    </script>
+    <script>
+        const quotes=[
+            "tit for tat",
+            "जैसे को तैसा",
+            "all is well that ends well",
+            "अंत भला तो सब भला",
+            "oil and truth must come out",
+            "दूध का दूध और पानी का पानी",
+            "there is a fly in the ointment","मरहम में एक मक्खी है",
+            "good mind good find",
+            "आप भला तो जग भला",
+            "earth's joys and heaven's combined",
+            "आम के आम, गुठली के दाम"
+
+        ];
+        const generateBtn=document.getElementById('generateBtn');
+        const quoteDisplay=document.getElementById('quoteDisplay');
+        // one by one 
+        let index=0;
+        quoteDisplay.innerHTML=quotes[0];
+        function generateQuote(){
+            // const randomIndx=Math.floor(Math.random()*quotes.length);
+            // const quote=quotes[randomIndx];
+            // quoteDisplay.innerText=quote;
+            // it was random TO selecting one by one 
+            index++;
+            index %=quotes.length;
+            quoteDisplay.innerHTML=quotes[index]
+
+        };
+        generateBtn.addEventListener('click', generateQuote)
+    </script>
+    <script>
+        const x=document.getElementById('number1')
+        const y=document.getElementById('number2')
+        const results=document.getElementById('results')
+
+
+
+
+
+        function calculator(operator){
+            const num1=parseInt(x.value)
+            const num2=parseInt(y.value)
+            if (isNaN(num1 || num2)) {
+                results.innerText='plzz enter a valid no';
+                return
+            }
+
+            switch(operator){
+                case '+':
+                    results.innerText=`sum: ${num1+num2}`
+                break
+                case '-':
+                    results.innerText=`sub: ${num1-num2}`
+                break
+                case '*':
+                    results.innerText=`mult: ${num1*num2}`
+                break
+                case '/':
+                    if (num2===0) {
+                        results.innerText='can not devide by ziro'
+                        
+                    }else{
+                        results.innerText=`dev: ${num1/num2}`
+
+                    }
+                    
+                break
+                default:
+                    results.innerText='invalid operator'
+            }
+        }
+    </script>
+    <script>
+
+//         function experiment(){
+//             const str = "The quick brown fox jumps over the lazy dog.";
+
+// const words = str.split(" ");
+// console.log(words[3]);
+// // Expected output: "fox"
+
+// const chars = str.split("");
+// console.log(chars[8]);
+// // Expected output: "k"
+
+// const strCopy = str.split();
+// console.log(strCopy);
+// // Expected output: Array ["The quick brown fox jumps over the lazy dog."]
+
+//         }
+        const textInput=document.getElementById('textInput');
+        const limit=200;
+        const charCount=document.getElementById('charCount');
+        const warningMess=document.getElementById('warningMess');
+
+        function updateCharCount(){
+            const storedvalue=textInput.value;
+            const charCountValue=textInput.value.length;
+            // const wordCount=textInput.value.split(' ').length;
+            const wordCount=textInput.value.split(' ');
+            const allWordCount=wordCount.filter((value, index)=>{
+                return value ? index+1:index
+               
+            })
+
+           
+            
+            // const wordCount=textInput.value.split(' ').length;
+            
+            charCount.innerText=`${charCountValue} / ${limit} characters and ${allWordCount.length} words`;
+            warningMess.innerText='';
+            if (charCountValue <limit) {
+                charCount.style.color='green'
+                
+            }else
+            if (charCountValue ===limit) {
+                charCount.style.color='yellow'
+
+                
+            }else
+            if(charCountValue>limit){
+                charCount.style.color='red';
+                warningMess.innerText='Character limit exceed'
+
+            }
+        }
+
+        textInput.addEventListener('input', updateCharCount)
+
+
+    </script>
+    <script>
+        const colorbtn=document.getElementById('random-color');
+    function updateColor(){
+        // rgb 
+        // r:0=>255
+        // g:0=>255
+        // b:0=>255
+        const red=Math.floor(Math.random()*256);
+        const green=Math.floor(Math.random()*256);
+        const blue=Math.floor(Math.random()*256);
+        document.body.style.background=`rgb(${red}, ${green}, ${blue})`
+    }
+    colorbtn.addEventListener('click', updateColor)
+    </script>
+     <script>
+        const colorInput=document.getElementById('colorInput')
+        const colorCode=document.getElementById('colorCode')
+        const copyBtn=document.getElementById('copyBtn')
+        const complementoryContainer=document.getElementById('complementoryContainer')
+        const saveColorBtn=document.getElementById('saveColorBtn')
+        const favouriteContaier=document.getElementById('favouriteContaier')
+
+        colorInput.addEventListener('input', ()=>{
+            const selectedColor=colorInput.value;
+            updateColorDisplay(selectedColor);
+            showComplementoryColor(selectedColor)
+        })
+        function updateColorDisplay(color){
+            colorCode.textContent=color;
+            colorCode.style.color=color;
+            copyBtn.style.background=color;
+            saveColorBtn.style.background=color;
+        }
+        function showComplementoryColor(color){
+            const complementoryColors=getComplementoryColor(color);
+            complementoryContainer.innerHTML=""; // clear previous colors
+            complementoryColors.forEach((compColor)=>{
+                const colorBox=document.createElement('div');
+                colorBox.classList.add('color-box');
+                colorBox.style.background=compColor;
+                complementoryContainer.appendChild(colorBox)
+            })
+        }
+        function getComplementoryColor(color){
+            // slice() for remove #('#ooffaa')
+            const base=parseInt(color.slice(1),16);
+            const complement=(0xFFFFFF ^ base).toString(16).padStart(6,'0');
+            return [`#${complement}`]
+        }
+        copyBtn.addEventListener('click', (e)=>{
+            navigator.clipboard
+            .writeText(colorCode.textContent)
+            .then(()=>alert('color code copied'))
+            .catch((err)=>console.error('failed to copy'))
+        })
+        saveColorBtn.addEventListener('click', ()=>{
+            const color=colorCode.textContent;
+            addfavouriteColor(color);
+        })
+        function addfavouriteColor(color){
+            const complementoryColors=getComplementoryColor(color);
+            // for selectedColor
+            const colorBox=document.createElement('div');
+            // for compcolor 
+            const newdiv=document.createElement('div');
+            colorBox.classList.add('color-box');
+            colorBox.style.background=color;
+            colorBox.innerText='pic clo'
+            newdiv.classList.add('color-box');
+            newdiv.style.background=complementoryColors;
+            newdiv.innerText='comp clo'
+            favouriteContaier.appendChild(colorBox)
+            favouriteContaier.appendChild(newdiv)
+            // to remove selectedColor 
+            colorBox.addEventListener('dblclick', (e)=>{
+            e.target.remove();
+            })
+            newdiv.addEventListener('dblclick', (e)=>{
+            e.target.remove();
+            })
+        }
+// function (){
+// x	y	x XOR y
+// 0	0	0
+// 0	1	1
+// 1	0	1
+// 1	1	0
+// //         <body>
+// //     <input type="text" id="input">
+// //     <button onclick="copy()">copy</button>
+// //     <button onclick="getdata()">get</button>
+// //     <script>
+// //         function copy(){
+// //             data=document.getElementById('input').value;
+// //             navigator.clipboard.writeText(data);
+// //             alert('copied')
+// //         }
+// //         function getdata(){
+// //             data=document.getElementById('input').value;
+// //             navigator.clipboard.readText().then((data)=>{
+// //                 document.getElementById('input').value=data;
+// //             }
+// //         )
+// //         alert(data)
+// //         }
+// //    <!-- 
+// }
+
+    </script>
+<script>
+    const billAmountInput=document.getElementById('billAmount')
+    const tipPercentageInput=document.getElementById('tipPercentage')
+    const numPeopleInput=document.getElementById('numPeople')
+    const calculateBtnBtn=document.getElementById('calculateBtn')
+    const totalTipDisplay=document.getElementById('totalTip')
+    const tipPerPersonDisplay=document.getElementById('tipPerPerson')
+
+    calculateBtnBtn.addEventListener('click', calculateamount);
+
+    function calculateamount(){
+        const billAmount=parseFloat(billAmountInput.value);
+        const tipPercentage=parseFloat(tipPercentageInput.value);
+        const numPeople=parseInt(numPeopleInput.value);
+
+        if (Number.isNaN(billAmount) ||
+         Number.isNaN(tipPercentage) || 
+         Number.isNaN(numPeople)) {
+            alert('please enter a valid value')
+            return
+        }
+            const totalTip=(billAmount*tipPercentage)/100;
+            const tipPerPerson=totalTip/numPeople;
+            totalTipDisplay.textContent=`total tip :$${totalTip.toFixed(2)}`;
+            tipPerPersonDisplay.textContent=`tip for each member : $${tipPerPerson.toFixed(2)}`
+        
+    }
+
+
+
+
+</script>
+<script>
+    const inputText=document.getElementById('inputText')
+    const checkButton=document.getElementById('checkButton')
+    const resultMessage=document.getElementById('resultMessage')
+
+    checkButton.addEventListener('click', checkPalindrome);
+    function checkPalindrome(){
+        const text=inputText.value.toLowerCase().replace(/[^a-z0-9]/g,"");
+        const reverseText=text.split("").reverse().join("")
+        if (text===reverseText) {
+            resultMessage.textContent=`${inputText.value} is a plindrome`;
+            resultMessage.style.color='green';
+            
+        }else{
+            resultMessage.textContent=`${inputText.value} is not a plindrome`;
+            resultMessage.style.color='red';
+
+        }
+    }
+</script>
+<script>
+    const dice=document.getElementById('dice')
+    const rollButton=document.getElementById('rollButton')
+    const resultMessagess=document.getElementById('resultMessagess')
+    rollButton.addEventListener('click', rollDice);
+
+    const diceFace=["\u2680","\u2681","\u2682","\u2683","\u2684","\u2685"];
+    function rollDice(){
+        const randomIndex=Math.floor(Math.random()*6);
+        dice.textContent=diceFace[randomIndex];
+        resultMessagess.textContent=`you rolled ${randomIndex+1}`
+    }
+</script>
+</body>
+</html>

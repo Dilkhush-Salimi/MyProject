@@ -1,0 +1,30 @@
+.container{
+            text-align: center;
+            width: 60%;
+            height: 300px;
+            margin: 40px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+        }
+         button{
+            margin: 5px;
+            text-align: center;                                                                                  
+        }
+         button, input{
+            height: 30px;
+            
+        }
+        .dice{
+            font-size: 5rem;
+            margin: 20px 0;
+            color: greenyellow;
+
+        }
+        #rollButton{
+            background: greenyellow;
+            border: none;
+            color: #1e1e1e;
+            padding: 10px;
+            font-size: 1rem;
+            cursor:pointer;
+        }
